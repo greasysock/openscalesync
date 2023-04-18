@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pybluez = {git = "https://github.com/pybluez/pybluez.git"}
+evdev = "*"
+paho-mqtt = "*"
+dbus-python = "*"
+pyyaml = "*"
+numpy = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"

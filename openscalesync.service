@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenScale Sync Python Script
+After=bluetooth.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /path/to/openscalesync.py -c /path/to/config.yml
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,10 @@
+mqtt:
+  host: localhost
+  port: 1883
+  userername:
+  passsword:
+  topic: openscale
+scale:
+  adapter: wiifit
+  topic: wiifit
+  mac: 00:00:00:00:00:00
