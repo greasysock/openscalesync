@@ -1,6 +1,4 @@
 class Scale:
-  _lower_limit = 0 # kg, will ignore any mass below this
-
   def __init__(self, config):
     self._is_measuring = False
     self._measure_callback = None
@@ -8,17 +6,12 @@ class Scale:
 
   def connect(self):
     pass
+
   def disconnect(self):
     pass
 
-  def measure(self, callback):
-    self._is_measuring = True
+  def on_measurement(self, callback):
     self._measure_callback = callback
-
-    callback(self, self._get_mass())
-
-    self._is_measuring = False
-    self._measure_callback = None
 
   def _get_mass(self):
     return 0

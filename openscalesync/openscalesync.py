@@ -38,8 +38,6 @@ if __name__ == '__main__':
   # Start mqtt loop
   mqtt_client.loop_start()
 
-  scale = scale_utils.load_scale(config['scale'])
-
   state = { 'last_mass': None }
   # Define a function to publish the mass to mqtt
   def publish_mass(scale: support.scales.scale.Scale, mass: float):
@@ -56,6 +54,9 @@ if __name__ == '__main__':
     state['last_mass'] = mass
     scale.disconnect()
 
+  scale = scale_utils.load_scale(config['scale'])
+  scale.on_measurement(publish_mass)
+
   def status_loop():
     last_connected = False
     mqtt_client.publish(topic(config['scale']['topic'], 'connected'), 0)
@@ -66,21 +67,9 @@ if __name__ == '__main__':
         last_connected = scale.connected
       time.sleep(0.5)
 
-  def scale_loop():
-    while True:
-      if scale.connected and not scale.is_measuring:
-        scale.measure(publish_mass)
-      else:
-        scale.connect()
-      time.sleep(4)
-
   # Start status loop
   status_thread = threading.Thread(target=status_loop, daemon=True)
   status_thread.start()
-
-  # Start scale loop
-  scale_thread = threading.Thread(target=scale_loop, daemon=True)
-  scale_thread.start()
 
   while True:
     time.sleep(1)

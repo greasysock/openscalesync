@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1d052654a621e87b23347c428600483138ca9eaccbfaecfc63bab5495cd27381"
+            "sha256": "fb176b6fe9ee718c9c0bb8a2c7938f7243334c58d74dd4dedbd86a1187fcfec6"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.10"
+            "python_version": "3.9.2"
         },
         "sources": [
             {
@@ -70,10 +70,6 @@
             ],
             "index": "pypi",
             "version": "==1.6.1"
-        },
-        "pybluez": {
-            "git": "https://github.com/pybluez/pybluez.git",
-            "ref": "4d46ce14d9e888e3b0c65d5d3ba2a703f8e5e861"
         },
         "pyyaml": {
             "hashes": [
